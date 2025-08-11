@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        
+        #weather-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+   
+    <canvas id="weather-canvas"></canvas>
+
+    <div class="weather-container">
+        <h1>🌤️ Weather App</h1>
+
+    
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name">
+            <button id="search-btn">Search</button>
+        </div>
+
+      
+        <button id="location-btn" class="location-btn">
+            📍 Use My Location
+        </button>
+       
+        <div id="error-message" class="error-message" style="display: none;">
+            <span id="error-text"></span>
+            <button class="close-error">×</button>
+        </div>
+        <div id="loading-spinner" class="loading-spinner" style="display: none;">⏳ Loading...</div>
+
+      
+        <div id="weather-info" class="weather-info" style="display:none;">
+           
+            <div class="main-weather">
+                <div class="weather-icon-temp">
+                    <img id="weather-icon" alt="Weather Icon">
+                    <p id="temperature" class="temp"></p>
+                  
+                    
+                </div>
+               <div>
+    <h2 id="city-name"></h2>
+    <p id="local-time" class="desc" style="margin-top: 4px; margin-bottom: 4px;"></p>
+    <p id="description" class="desc"></p>
+</div>
+
+                  <button id="unit-toggle" class="unit-toggle">Show in °F</button>
+                 <button id="share-weather" class="share-weather">📤 Share Weather</button>
+            </div>
+            
+            <div class="extra-info">
+               <p>🌡️ Feels Like: <span id="feels-like" class="temp-value"></span>°C
+               <span class="info-icon" title="How warm it actually feels considering wind and humidity">ℹ️</span>
+               </p>
+<p>📉 Min Temp: <span id="min-temp" class="temp-value"></span>°C
+<span class="info-icon" title="Lowest forecasted temperature for the day">ℹ️</span></p>
+<p>📈 Max Temp: <span id="max-temp" class="temp-value"></span>°C
+<span class="info-icon" title="Highest forecasted temperature for the day">ℹ️</span></p>
+<p>💧 Humidity: <span id="humidity" class="humidity-value"></span>%
+<span class="info-icon" title="Amount of moisture in the air">ℹ️</span></p>
+<p>⚖️ Pressure: <span id="pressure" class="pressure-value"></span> hPa
+ <span class="info-icon" title="Atmospheric pressure — lower means possible rain">ℹ️</span></p>
+<p>🌬️ Wind: <span id="wind" class="wind-value"></span> km/h
+<span class="info-icon" title="Wind speed at ground level">ℹ️</span></p>
+<p>🌅 Sunrise: <span id="sunrise"></span>
+<span class="info-icon" title="Time when the sun rises at this location">ℹ️</span></p>
+<p>🌇 Sunset: <span id="sunset"></span>
+ <span class="info-icon" title="Time when the sun sets at this location">ℹ️</span></p>
+
+            </div>
+
+            <div class="dashboard" style="display:none;" id="dashboard">
+    
+    <div>
+        <div id="forecast" style="display:none;">
+            <div id="forecast-items"></div>
+        </div>
+    </div>
+
+    
+    <div id="charts-section" style="display:none;">
+        <canvas id="tempChart" height="200"></canvas>
+        <canvas id="weatherChart" height="200" style="margin-top: 20px;"></canvas>
+    </div>
+    
+<div id="map-section" style="display:none;">
+    <h2>🌍 Global Weather Map</h2>
+    <div id="weather-map"></div>
+</div>
+
+</div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+ <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="config.js"></script>
+
+    <script src="app.js"></script>
+   
+
+</body>
+</html>
